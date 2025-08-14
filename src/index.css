@@ -2,39 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Personal Intro Page Design System - Modern Developer Portfolio Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
+    /* Base colors */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    
+    /* Brand colors - Tech-inspired gradient theme */
+    --primary: 217 91% 60%;
     --primary-foreground: 210 40% 98%;
+    --primary-glow: 225 84% 75%;
+    
+    /* Developer-themed gradient */
+    --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%), hsl(225 25% 20%), hsl(217 91% 60%));
+    --gradient-accent: linear-gradient(45deg, hsl(217 91% 60%), hsl(225 84% 75%));
+    
+    /* Interactive elements */
+    --button-primary: hsl(217 91% 60%);
+    --button-primary-hover: hsl(217 91% 65%);
+    --button-glow: 0 0 30px hsl(217 91% 60% / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Card and UI elements */
+    --card: 225 25% 20%;
+    --card-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: 225 25% 20%;
+    --popover-foreground: 210 40% 98%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --secondary: 225 25% 25%;
+    --secondary-foreground: 210 40% 98%;
 
-    --destructive: 0 84.2% 60.2%;
+    --muted: 225 25% 15%;
+    --muted-foreground: 217 32% 65%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 225 25% 25%;
+    --input: 225 25% 20%;
+    --ring: 217 91% 60%;
 
     --radius: 0.5rem;
 
@@ -101,5 +116,52 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-hero);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .btn-hero {
+    background: var(--button-primary);
+    color: hsl(var(--primary-foreground));
+    transition: var(--transition-smooth);
+    box-shadow: var(--button-glow);
+  }
+  
+  .btn-hero:hover {
+    background: var(--button-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px hsl(217 91% 60% / 0.6);
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .fade-in-delay {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .fade-in-delay-2 {
+    animation: fadeIn 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
